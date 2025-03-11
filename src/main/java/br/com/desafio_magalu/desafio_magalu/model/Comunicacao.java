@@ -16,7 +16,7 @@ import static br.com.desafio_magalu.desafio_magalu.model.enums.Status.PENDENTE;
 @Table(name = "agendamento")
 @EqualsAndHashCode
 @Setter
-public class Agendamento {
+public class Comunicacao {
 
     @Id
     @Getter

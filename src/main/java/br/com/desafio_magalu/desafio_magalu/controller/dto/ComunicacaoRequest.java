@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
-public record AgendamentoRequest(
+public record ComunicacaoRequest(
 
         @NotNull(message = "A data/hora não pode estar em branco")
         @FutureOrPresent(message = "Não é permitido agendamentos com datas no passado")
