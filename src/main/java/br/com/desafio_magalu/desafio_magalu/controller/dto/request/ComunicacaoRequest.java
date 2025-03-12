@@ -1,4 +1,4 @@
-package br.com.desafio_magalu.desafio_magalu.controller.dto;
+package br.com.desafio_magalu.desafio_magalu.controller.dto.request;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;

@@ -1,8 +1,8 @@
 package br.com.desafio_magalu.desafio_magalu.controller;
 
-import br.com.desafio_magalu.desafio_magalu.controller.dto.ComunicacaoRequest;
-import br.com.desafio_magalu.desafio_magalu.controller.dto.ComunicacaoResponse;
-import br.com.desafio_magalu.desafio_magalu.controller.dto.ComunicacaoResponseStatus;
+import br.com.desafio_magalu.desafio_magalu.controller.dto.request.ComunicacaoRequest;
+import br.com.desafio_magalu.desafio_magalu.controller.dto.response.ComunicacaoResponseId;
+import br.com.desafio_magalu.desafio_magalu.controller.dto.response.ComunicacaoResponseStatus;
 import br.com.desafio_magalu.desafio_magalu.service.ComunicacaoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class ComunicacaoController {
     private final ComunicacaoService service;
 
     @PostMapping("/agendamento")
-    public ResponseEntity<ComunicacaoResponse> agendamento(@RequestBody @Valid ComunicacaoRequest request, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity<ComunicacaoResponseId> agendamento(@RequestBody @Valid ComunicacaoRequest request, UriComponentsBuilder uriComponentsBuilder) {
         var response = service.agendar(request);
         var uri = uriComponentsBuilder.path("/{id}")
                 .buildAndExpand(response.id())
