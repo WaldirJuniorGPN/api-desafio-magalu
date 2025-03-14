@@ -3,10 +3,7 @@ package br.com.desafio_magalu.desafio_magalu.model;
 import br.com.desafio_magalu.desafio_magalu.model.enums.FormatoComunicacao;
 import br.com.desafio_magalu.desafio_magalu.model.enums.Status;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -14,13 +11,12 @@ import static br.com.desafio_magalu.desafio_magalu.model.enums.Status.PENDENTE;
 
 @Entity(name = "Agendamento")
 @Table(name = "agendamento")
+@NoArgsConstructor
 @EqualsAndHashCode
-@Setter
 public class Comunicacao {
 
     @Id
     @Getter
-    @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
@@ -41,6 +37,14 @@ public class Comunicacao {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private Status status;
+
+    public Comunicacao(LocalDateTime dataHora, String destinatario, String mensagem, FormatoComunicacao formatoComunicacao, Status status) {
+       this.dataHora = dataHora;
+       this.destinatario = destinatario;
+       this.mensagem = mensagem;
+       this.formatoComunicacao = formatoComunicacao;
+       this.status = status;
+    }
 
     @PrePersist
     public void prePersist() {
