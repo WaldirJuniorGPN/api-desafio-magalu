@@ -13,7 +13,7 @@ import static br.com.desafio_magalu.desafio_magalu.model.enums.Status.PENDENTE;
 @Table(name = "agendamento")
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Comunicacao {
+public class Comunicacado {
 
     @Id
     @Getter
@@ -34,11 +34,12 @@ public class Comunicacao {
     private FormatoComunicacao formatoComunicacao;
 
     @Getter
+    @Setter
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private Status status;
 
-    public Comunicacao(LocalDateTime dataHora, String destinatario, String mensagem, FormatoComunicacao formatoComunicacao, Status status) {
+    public Comunicacado(LocalDateTime dataHora, String destinatario, String mensagem, FormatoComunicacao formatoComunicacao, Status status) {
        this.dataHora = dataHora;
        this.destinatario = destinatario;
        this.mensagem = mensagem;
