@@ -8,12 +8,13 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 import static br.com.desafio_magalu.desafio_magalu.model.enums.Status.AGENDADO;
+import static br.com.desafio_magalu.desafio_magalu.model.enums.Status.PENDENTE;
 
 @Entity(name = "Agendamento")
 @Table(name = "agendamento")
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Comunicacado {
+public class Comunicacao {
 
     @Id
     @Getter
@@ -39,16 +40,21 @@ public class Comunicacado {
     @Column(name = "status", nullable = false)
     private Status status;
 
-    public Comunicacado(LocalDateTime dataHora, String destinatario, String mensagem, FormatoComunicacao formatoComunicacao) {
+    public Comunicacao(LocalDateTime dataHora, String destinatario, String mensagem, FormatoComunicacao formatoComunicacao) {
        this.dataHora = dataHora;
        this.destinatario = destinatario;
        this.mensagem = mensagem;
        this.formatoComunicacao = formatoComunicacao;
+       this.status = PENDENTE;
     }
 
     @PrePersist
     public void prePersist() {
         this.status = AGENDADO;
+    }
+
+    protected void setId(long id) {
+        this.id = id;
     }
 }
 
